@@ -1,0 +1,1 @@
+protocol BaseViewPresentable: NSObjectProtocol, Presentable { }
