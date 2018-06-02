@@ -1,7 +1,4 @@
 
-import Foundation
-import UIKit
-
 protocol ReusableView: class {}
 
 extension ReusableView where Self: UIView {

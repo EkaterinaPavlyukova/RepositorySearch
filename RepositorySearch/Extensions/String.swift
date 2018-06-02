@@ -6,4 +6,12 @@
 //  Copyright © 2018 Ekaterina Pavlyukova. All rights reserved.
 //
 
-import Foundation
+extension String {
+    var URLEscaped: String {
+        return self.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? ""
+    }
+    
+    func truncated(_ limit: Int) -> String {
+        return prefix(limit).capitalized
+    }
+}

@@ -1,7 +1,4 @@
 
-import Foundation
-import UIKit
-
 extension UITableView {
 	
 	func dequeueReusableCell<T>(forIndexPath indexPath: IndexPath) -> T where T: UITableViewCell {

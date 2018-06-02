@@ -9,18 +9,8 @@ final class ApplicationCoordinator: BaseCoordinator {
     self.coordinatorFactory = coordinatorFactory
   }
   
-  override func start(with option: DeepLinkOption?) {
-    //start with deepLink
-    if let option = option {
-      switch option {
-      default: childCoordinators.forEach { coordinator in
-        coordinator.start(with: option)
-        }
-      }
-    // default start
-    } else {
+  override func start() {
         runMainFlow()
-    }
   }
   
   private func runMainFlow() {

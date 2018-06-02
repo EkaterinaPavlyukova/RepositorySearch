@@ -1,15 +1,11 @@
 class BaseCoordinator: Coordinator {
 
   var childCoordinators: [Coordinator] = []
-  let disposeBag = DisposeBag()
-
-  func start() {
-    start(with: nil)
-  }
   
-    func start(with option: DeepLinkOption?) { }
+    func start() {
+        fatalError("Method start must be overriden")
+    }
     
-    // add only unique object
     func addDependency(_ coordinator: Coordinator) {
         for element in childCoordinators where element === coordinator {
             return

@@ -1,3 +1,4 @@
+
 class TabbarCoordinator: BaseCoordinator {
   
   private let tabbarView: TabbarView
@@ -11,11 +12,11 @@ class TabbarCoordinator: BaseCoordinator {
   override func start() {
     tabbarView.onViewDidLoad = runSearchFlow()
     tabbarView.onSearchFlowSelect = runSearchFlow()
-    tabbarView.onAccountFlowSelect = runAccountFlow()
+    tabbarView.onHistoryFlowSelect = runHistoryFlow()
   }
   
   private func runSearchFlow() -> ((UINavigationController) -> Void) {
-    return { navController in
+    return { [unowned self] navController in
       if navController.viewControllers.isEmpty == true {
         let itemCoordinator = self.coordinatorFactory.makeSearchCoordinator(navController: navController)
         itemCoordinator.start()
@@ -24,12 +25,12 @@ class TabbarCoordinator: BaseCoordinator {
     }
   }
   
-  private func runAccountFlow() -> ((UINavigationController) -> Void) {
-    return { navController in
+  private func runHistoryFlow() -> ((UINavigationController) -> Void) {
+    return { [unowned self] navController in
       if navController.viewControllers.isEmpty == true {
-        let accountCoordinator = self.coordinatorFactory.makeAccountCoordinator(navController: navController)
-        accountCoordinator.start()
-        self.addDependency(accountCoordinator)
+        let historyCoordinator = self.coordinatorFactory.makeHistoryCoordinator(navController: navController)
+        historyCoordinator.start()
+        self.addDependency(historyCoordinator)
       }
     }
   }
